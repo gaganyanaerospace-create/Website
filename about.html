@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | Gaganyan Aerospace</title>
+<meta name="description" content="Learn about Gaganyan Aerospace — our mission, vision, team, and story behind India's innovative drone technology company.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green-btn:   #3a6b47;
+  --green-hover: #2f5a3b;
+  --heading:     #0d0d0d;
+  --body-text:   #374151;
+  --muted:       #555;
+  --card-border: #e5e7eb;
+  --green-icon:  #22c55e;
+  --green-icon-bg: #dcfce7;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: var(--body-text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 72px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo img { height: 52px; object-fit: contain; }
+.nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+.nav-links a {
+  color: #111; font-size: 14px; font-weight: 500;
+  text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green-btn); }
+.nav-cta {
+  background: var(--green-btn) !important; color: #fff !important;
+  padding: 10px 24px; border-radius: 8px; font-weight: 700 !important;
+  font-size: 14px !important; transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(--green-hover) !important; }
+
+/* ── TICKER ── */
+.ticker {
+  background: #1a1a1a; overflow: hidden; white-space: nowrap;
+  padding: 10px 0; margin-top: 72px;
+}
+.ticker-inner {
+  display: inline-flex; gap: 48px; align-items: center;
+  animation: ticker 35s linear infinite;
+  font-size: 13px; color: #d0d0d0;
+}
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.ticker-dot { color: #666; font-size: 8px; }
+
+/* ── HERO ── */
+.hero-section {
+  background: linear-gradient(160deg, #fef3c7 0%, #fde8b0 30%, #fef9ee 70%, #fff 100%);
+  padding: 100px 5% 80px;
+  text-align: center;
+  min-height: 340px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+.hero-section h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 800; line-height: 1.1;
+  color: #111; margin-bottom: 20px;
+}
+.hero-section p {
+  font-size: 16px; color: #555; max-width: 520px;
+  margin: 0 auto; line-height: 1.7;
+}
+
+/* ── SECTION UTILITY ── */
+section { padding: 80px 5%; }
+.section-eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+  text-transform: uppercase; color: #888; margin-bottom: 14px;
+}
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 800; line-height: 1.15;
+  color: #111; margin-bottom: 18px; letter-spacing: -0.3px;
+}
+.section-body {
+  font-size: 15px; color: #555; line-height: 1.8;
+}
+
+/* ── GREEN ICON CIRCLE ── */
+.green-icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--green-icon-bg);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 16px; flex-shrink: 0;
+}
+.green-icon svg { width: 24px; height: 24px; }
+
+/* ── MISSION SECTION ── */
+.mission-section {
+  background: #fff;
+  padding: 90px 5%;
+}
+.mission-inner {
+  display: flex; gap: 72px; align-items: center; flex-wrap: wrap;
+  max-width: 1200px; margin: 0 auto;
+}
+.mission-illustration { flex: 1; min-width: 280px; display: flex; align-items: center; justify-content: center; }
+.mission-illustration img { width: 100%; max-width: 420px; height: auto; border-radius: 16px; }
+.mission-text { flex: 1; min-width: 280px; }
+.mission-feature-box {
+  background: #f9fafb; border-radius: 18px;
+  padding: 32px 28px; margin-top: 28px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+}
+.mission-feat h4 { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 8px; }
+.mission-feat p { font-size: 13px; color: #666; line-height: 1.7; }
+
+/* ── STATS SECTION ── */
+.stats-section {
+  background: #fff; padding: 0 5% 80px;
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  max-width: 1200px; margin: 0 auto;
+}
+.stat-card {
+  border-radius: 20px; padding: 42px 32px; text-align: center;
+}
+.stat-card:nth-child(1) { background: #f0fdf4; }
+.stat-card:nth-child(2) { background: #fef6ee; }
+.stat-card:nth-child(3) { background: #eef4ff; }
+.stat-card:nth-child(4) { background: #fff1f1; }
+.stat-card .num {
+  font-size: 54px; font-weight: 900; color: #111;
+  letter-spacing: -2px; line-height: 1;
+}
+.stat-card .label {
+  font-size: 14px; color: #666; margin-top: 10px; font-weight: 500;
+}
+
+/* ── VISION SECTION ── */
+.vision-section {
+  background: #f9fafb; padding: 90px 5%;
+}
+.vision-inner {
+  display: flex; gap: 80px; align-items: center; flex-wrap: wrap;
+  max-width: 1200px; margin: 0 auto;
+}
+.vision-text { flex: 1; min-width: 280px; }
+.vision-feature-box {
+  background: #fff; border-radius: 18px;
+  padding: 32px 28px; margin-top: 28px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  border: 1px solid var(--card-border);
+}
+.vision-feat h4 { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 8px; }
+.vision-feat p { font-size: 13px; color: #666; line-height: 1.7; }
+.vision-illustration {
+  flex: 1; min-width: 280px;
+  display: flex; align-items: center; justify-content: center;
+}
+.vision-illustration img { width: 100%; max-width: 440px; height: auto; border-radius: 16px; }
+
+/* ── TEAM SECTION ── */
+.team-section {
+  background: #fff; padding: 90px 5%;
+}
+.team-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 4vw, 48px);
+  font-weight: 800; text-align: center;
+  color: #111; margin-bottom: 56px;
+}
+.team-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px; max-width: 1100px; margin: 0 auto;
+}
+.team-card {
+  background: #fff; border: 1px solid #e5e7eb;
+  border-radius: 20px; padding: 40px 28px 32px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; transition: all 0.3s;
+}
+.team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); }
+.team-avatar {
+  width: 110px; height: 110px; border-radius: 50%;
+  object-fit: cover; margin-bottom: 22px;
+  border: 3px solid #f0f0f0;
+}
+.team-card h3 { font-size: 18px; font-weight: 800; color: #111; margin-bottom: 5px; }
+.team-card span { font-size: 14px; color: #888; font-weight: 500; }
+
+/* ── WHY / CONTACT SECTION ── */
+.contact-section {
+  background: #f9fafb; padding: 90px 5%;
+}
+.contact-inner {
+  display: flex; gap: 80px; align-items: center; flex-wrap: wrap;
+  max-width: 1200px; margin: 0 auto;
+}
+.contact-text { flex: 1; min-width: 280px; }
+.contact-text .section-heading { margin-bottom: 28px; }
+.contact-card {
+  background: #fff; border: 1px solid #e5e7eb;
+  border-radius: 20px; padding: 36px 32px;
+}
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px; font-weight: 800;
+  color: #111; margin-bottom: 6px;
+}
+.contact-card .addr { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 28px; }
+.contact-row {
+  display: flex; gap: 14px; align-items: flex-start;
+  margin-bottom: 20px;
+}
+.contact-row:last-child { margin-bottom: 0; }
+.contact-icon-wrap {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: #f0fdf4; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.contact-icon-wrap svg { width: 20px; height: 20px; stroke: #3a6b47; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.contact-row-text strong { font-size: 14px; font-weight: 700; color: #111; display: block; margin-bottom: 2px; }
+.contact-row-text span { font-size: 13px; color: #666; line-height: 1.5; display: block; }
+.contact-visual {
+  flex: 1; min-width: 280px;
+  display: flex; align-items: center; justify-content: center;
+}
+.contact-visual img { width: 100%; max-width: 420px; height: auto; border-radius: 16px; }
+
+/* ── CTA ── */
+.cta-section {
+  background: linear-gradient(135deg, #2f5a3b, #3a6b47);
+  padding: 80px 5%; text-align: center; color: #fff;
+}
+.cta-section h2 { font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; margin-bottom: 14px; color: #fff; }
+.cta-section p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
+.btn-white {
+  background: #fff; color: var(--green-btn);
+  padding: 14px 32px; border-radius: 100px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+}
+.btn-white:hover { background: #f0f0f0; transform: translateY(-1px); }
+.btn-outline-white {
+  border: 2px solid rgba(255,255,255,0.5); color: #fff;
+  padding: 12px 28px; border-radius: 100px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+}
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.9); }
+
+/* ── FOOTER ── */
+footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand-name { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+.footer-brand p { font-size: 14px; color: #9ca3af; line-height: 1.75; margin: 14px 0 22px; max-width: 280px; }
+.footer-contact { font-size: 14px; color: #9ca3af; line-height: 1.9; }
+.footer-contact strong { color: #d1d5db; }
+.footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a { font-size: 14px; color: #9ca3af; text-decoration: none; transition: color 0.2s; }
+.footer-col ul a:hover { color: #fff; }
+.social-links { display: flex; gap: 10px; margin-top: 22px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: #1f2937; border: 1px solid #374151;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; text-decoration: none; transition: all 0.2s;
+}
+.social-btn:hover { background: var(--green-btn); border-color: var(--green-btn); }
+.footer-bottom {
+  border-top: 1px solid #1f2937; padding-top: 24px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-bottom p, .footer-bottom a { font-size: 13px; color: #6b7280; text-decoration: none; }
+.footer-bottom a:hover { color: #fff; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 0 5%; }
+  .nav-links { display: none; }
+  .mission-inner, .vision-inner, .contact-inner { flex-direction: column; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .mission-feature-box, .vision-feature-box { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .team-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780456849/favicon_2_tp96mf.png" alt="Gaganyan Aerospace Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">HOME</a></li>
+    <li><a href="index.html#services">SERVICES</a></li>
+    <li><a href="about.html" class="active">ABOUT</a></li>
+    <li><a href="#">BLOG</a></li>
+    <li><a href="index.html#contact">CONTACT</a></li>
+    <li><a href="https://chat.whatsapp.com/IgRP4Hm8J4B0c0K6Nhpb0U" target="_blank" class="nav-cta">Community</a></li>
+  </ul>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Redefining Perspectives: Unlocking the Power of Aerial Technology to Transform Industries and Inspire Innovation.</span>
+    <span class="ticker-dot">●</span>
+    <span>Redefining Perspectives: Unlocking the Power of Aerial Technology to Transform Industries and Inspire Innovation.</span>
+    <span class="ticker-dot">●</span>
+    <span>Redefining Perspectives: Unlocking the Power of Aerial Technology to Transform Industries and Inspire Innovation.</span>
+    <span class="ticker-dot">●</span>
+    <span>Redefining Perspectives: Unlocking the Power of Aerial Technology to Transform Industries and Inspire Innovation.</span>
+    <span class="ticker-dot">●</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero-section">
+  <h1>About<br>"Gaganyan Aerospace"</h1>
+  <p>Our mission is to utilize modern technology to aid society and educate young talents in the field of drone technology.</p>
+</div>
+
+<!-- MISSION SECTION -->
+<section class="mission-section">
+  <div class="mission-inner">
+    <!-- LEFT: Illustration -->
+    <div class="mission-illustration">
+      <!-- MISSION ILLUSTRATION IMAGE: Replace the src URL below with your actual image -->
+      <img
+        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460801/eLZtEHg3ckDSjq8FjzTVROoYAS4_hbldw0.avif"
+        alt="Team meeting illustration"
+      />
+    </div>
+
+    <!-- RIGHT: Text -->
+    <div class="mission-text">
+      <div class="section-eyebrow">EMPOWERING SUCCESS</div>
+      <h2 class="section-heading">Our Mission for your success</h2>
+      <p class="section-body">At Gaganyan Aerospace, we believe in the power of innovation to drive success. By providing cutting-edge drone technology, customized solutions, and expert training, we empower businesses and individuals to reach new heights. Together, we're building a future where technology and creativity fuel sustainable growth and success.</p>
+
+      <div class="mission-feature-box">
+        <div class="mission-feat">
+          <div class="green-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a5 5 0 0 1 5 5c0 2.76-2.24 5-5 5S7 9.76 7 7a5 5 0 0 1 5-5z"/>
+              <path d="M3 21c0-4.42 4.03-8 9-8s9 3.58 9 8"/>
+            </svg>
+          </div>
+          <h4>Best Solution</h4>
+          <p>Discover the best solution for your needs. Solve challenges, streamline processes, and achieve optimal outcomes.</p>
+        </div>
+        <div class="mission-feat">
+          <div class="green-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <h4>Innovation-Driven Excellence</h4>
+          <p>We are committed to revolutionizing industries with cutting-edge drone technology.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="num">3+</div>
+      <div class="label">Years of Experience</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">10+</div>
+      <div class="label">Active Clients</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">15+</div>
+      <div class="label">Awards Winning</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">97%</div>
+      <div class="label">Satisfied Client</div>
+    </div>
+  </div>
+</section>
+
+<!-- VISION SECTION -->
+<section class="vision-section">
+  <div class="vision-inner">
+    <!-- LEFT: Text -->
+    <div class="vision-text">
+      <div class="section-eyebrow">SHAPING FUTURES</div>
+      <h2 class="section-heading">Gaganyan Aerospace's Vision for Transformative Growth</h2>
+      <p class="section-body">We are dedicated to shaping the future through groundbreaking drone technology and innovative solutions. By empowering businesses, industries, and individuals with the tools they need to succeed, we're helping create a world where technology drives progress, growth, and a better tomorrow.</p>
+
+      <div class="vision-feature-box">
+        <div class="vision-feat">
+          <div class="green-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a5 5 0 0 1 5 5c0 2.76-2.24 5-5 5S7 9.76 7 7a5 5 0 0 1 5-5z"/>
+              <circle cx="12" cy="12" r="1"/>
+              <path d="M3 21c0-4.42 4.03-8 9-8s9 3.58 9 8"/>
+            </svg>
+          </div>
+          <h4>Innovative Solutions</h4>
+          <p>We are committed to delivering cutting-edge drone technology and solutions that transform industries and create new opportunities for growth and success.</p>
+        </div>
+        <div class="vision-feat">
+          <div class="green-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+              <polyline points="17 6 23 6 23 12"/>
+            </svg>
+          </div>
+          <h4>Empowering Progress</h4>
+          <p>By equipping businesses and individuals with the tools, knowledge, and expertise they need, we help shape a future of continuous innovation and advancement.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Growth chart illustration -->
+    <div class="vision-illustration">
+      <!-- VISION / GROWTH CHART IMAGE: Replace the src URL below with your actual image -->
+      <img
+        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460800/PcXIHjGlcxHlqNqKHekjQ3A20_pqyrap.webp"
+        alt="Gaganyan Aerospace growth vision chart"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- TEAM SECTION -->
+<section class="team-section">
+  <h2>Meet Our Team</h2>
+  <div class="team-grid">
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Sai Suraj (CEO): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460832/lvZRJqlVwCuGkj5t8NACDzc3zw_aiiwx8.avif" alt="Sai Suraj" />
+      <h3>Sai Suraj</h3>
+      <span>CEO</span>
+    </div>
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Sitha Ramaswamy (Operations Officer): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460832/HXk4eVScovzPRt6tbNlT377VRnQ_ntpiru.webp" alt="Sitha Ramaswamy" />
+      <h3>Sitha Ramaswamy</h3>
+      <span>Operations Officer</span>
+    </div>
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Vinay Kumar (Finserv Officer): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460830/EcLgOOybRrYwG1RzpCqkCLo50_xhdswn.webp" alt="Vinay Kumar" />
+      <h3>Vinay Kumar</h3>
+      <span>Finserv Officer</span>
+    </div>
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Rohith Kumar (HR Manager): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460833/Yt8L8TDnEpwvohVZVJWVGYKoCc_peuyou.webp" alt="Rohith Kumar" />
+      <h3>Rohith Kumar</h3>
+      <span>HR Manager</span>
+    </div>
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Sai Venkat (Technology Officer): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1779981093/WhatsApp_Image_2026-05-13_at_12.02.13_PM_woggf0.jpg" alt="Sai Venkat" />
+      <h3>Sai Venkat</h3>
+      <span>Technology Officer</span>
+    </div>
+
+    <div class="team-card">
+      <!-- TEAM PHOTO - Jaya Surya (Innovation Officer): Replace src URL below -->
+      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460820/qWQXyir6aaAPUE3pEPK0rKN76Lo_q4lko5.webp" alt="Jaya Surya" />
+      <h3>Jaya Surya</h3>
+      <span>Innovation Officer</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY CHOOSE US / CONTACT -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <!-- LEFT: Text + Card -->
+    <div class="contact-text">
+      <div class="section-eyebrow">WHY CHOOSE US</div>
+      <h2 class="section-heading">We value integrity and professionalism.</h2>
+
+      <div class="contact-card">
+        <h3>Location</h3>
+        <p class="addr">Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</p>
+
+        <div class="contact-row">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Email</strong>
+            <span>gaganyanaerospace@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Location</strong>
+            <span>Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</span>
+          </div>
+        </div>
+
+        <div class="contact-row">
+          <div class="contact-icon-wrap">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div class="contact-row-text">
+            <strong>Phone Number</strong>
+            <span>+91 77027 26262</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Location / Pin illustration -->
+    <div class="contact-visual">
+      <!-- CONTACT / LOCATION IMAGE: Replace the src URL below with your actual image (e.g. map pin illustration, office photo, or map screenshot) -->
+      <img
+        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780462787/FZznIrXpt9Y5ljQbcjfhm2kGFI_mdzwet.webp"
+        alt="Gaganyan Aerospace location"
+      />
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Don't Hesitate to Contact Us,<br>We Can Assist You!</h2>
+  <p>Reach out to our team for demos, training inquiries, partnerships, or custom drone solutions.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+    <a href="mailto:gaganyanaerospace@gmail.com" class="btn-white">Email Us →</a>
+    <a href="tel:+917702726262" class="btn-outline-white">+91 77027 26262</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="footer-brand-name">GAGANYAN AEROSPACE</div>
+      <p>Pioneering drone solutions that solve real-world problems and shape the future of industries. Committed to innovation, quality, and sustainability.</p>
+      <div class="footer-contact">
+        <div>📍 Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</div><br>
+        <div><strong>Phone:</strong> +91 77027 26262 / +91 9866 395959</div>
+        <div><strong>Email:</strong> gaganyanaerospace@gmail.com</div>
+      </div>
+      <div class="social-links">
+        <a href="https://www.youtube.com/@GaganyanAerospace" target="_blank" class="social-btn" title="YouTube">▶</a>
+        <a href="https://www.instagram.com/gaganyanaerospace/" target="_blank" class="social-btn" title="Instagram">📸</a>
+        <a href="https://www.linkedin.com/in/gaganyan-aerospace-219341325/" target="_blank" class="social-btn" title="LinkedIn">💼</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Pages</h5>
+      <ul>
+        <li><a href="index.html">Homepage</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#services">Service</a></li>
+        <li><a href="index.html#faq">FAQ's</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Quick Links</h5>
+      <ul>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Our Team</a></li>
+        <li><a href="#">Career</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5>Legal</h5>
+      <ul>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+      <h5 style="margin-top:24px;">Follow Us</h5>
+      <ul>
+        <li><a href="https://www.youtube.com/@GaganyanAerospace" target="_blank">Youtube</a></li>
+        <li><a href="https://www.instagram.com/gaganyanaerospace/" target="_blank">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/gaganyan-aerospace-219341325/" target="_blank">Linkedin</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© Copyright <strong style="color:#d1d5db;">Gaganyan Aerospace LLP.</strong> All Rights Reserved</p>
+    <p><a href="#">Privacy Policy</a> · <a href="#">Terms &amp; Conditions</a></p>
+  </div>
+</footer>
+
+</body>
+</html>

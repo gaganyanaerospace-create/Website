@@ -3,27 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | Gaganyan Aerospace</title>
-<meta name="description" content="Learn about Gaganyan Aerospace — our mission, vision, team, and story behind India's innovative drone technology company.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&display=swap" rel="stylesheet">
+<title>Home | Gaganyan Aerospace</title>
+<meta name="description" content="The future of Drone Technology is taking flight.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --green-btn:   #3a6b47;
-  --green-hover: #2f5a3b;
-  --heading:     #0d0d0d;
-  --body-text:   #374151;
-  --muted:       #555;
-  --card-border: #e5e7eb;
-  --green-icon:  #22c55e;
-  --green-icon-bg: #dcfce7;
+  --white:        #ffffff;
+  --black:        #0d0d0d;
+  --nav-bg:       #ffffff;
+  --ticker-bg:    #1a1a1a;
+  --ticker-text:  #d0d0d0;
+  --hero-bg-from: #d4e8e4;
+  --hero-bg-to:   #eaf4f2;
+  --body-bg:      #f7fafa;
+  --section-alt:  #ffffff;
+  --heading:      #0d0d0d;
+  --subheading:   #111827;
+  --body-text:    #374151;
+  --muted:        #6b7280;
+  --light-muted:  #9ca3af;
+  --green-btn:    #3a6b47;
+  --green-hover:  #2f5a3b;
+  --blue-ill:     #5b7fd4;
+  --blue-light:   #a8c0f0;
+  --blue-pale:    #dce8fb;
+  --card-border:  #e5e7eb;
+  --card-bg:      #ffffff;
+  --tag-color:    #3a6b47;
+  --link-color:   #1d4ed8;
+  --section-tag:  #374151;
 }
 
 html { scroll-behavior: smooth; }
+
 body {
   font-family: 'Inter', sans-serif;
-  background: #fff;
+  background: var(--white);
   color: var(--body-text);
   overflow-x: hidden;
   line-height: 1.6;
@@ -33,247 +50,559 @@ body {
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%; height: 72px;
-  background: #fff;
+  padding: 0 5%;
+  height: 72px;
+  background: var(--nav-bg);
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.nav-logo img { height: 52px; object-fit: contain; }
+.nav-logo-svg { width: 190px; height: 90px; max-height: 56px; object-fit: contain; display: block; flex-shrink: 0; }
+.nav-logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+.nav-logo-top { font-size: 16px; font-weight: 800; color: #0d0d0d; letter-spacing: 0.5px; }
+.nav-logo-bottom { font-size: 14px; font-weight: 700; color: #0d0d0d; letter-spacing: 1px; }
 .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
 .nav-links a {
   color: #111; font-size: 14px; font-weight: 500;
   text-decoration: none; letter-spacing: 0.3px; transition: color 0.2s;
 }
-.nav-links a:hover, .nav-links a.active { color: var(--green-btn); }
+.nav-links a:hover { color: var(--green-btn); }
+.nav-pages { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.nav-pages span { font-size: 11px; }
 .nav-cta {
-  background: var(--green-btn) !important; color: #fff !important;
+  background: var(--green-btn) !important;
+  color: #fff !important;
   padding: 10px 24px; border-radius: 8px; font-weight: 700 !important;
-  font-size: 14px !important; transition: background 0.2s !important;
+  font-size: 14px !important;
+  transition: background 0.2s !important; border: none;
 }
 .nav-cta:hover { background: var(--green-hover) !important; }
 
 /* ── TICKER ── */
 .ticker {
-  background: #1a1a1a; overflow: hidden; white-space: nowrap;
+  background: var(--ticker-bg);
+  overflow: hidden; white-space: nowrap;
   padding: 10px 0; margin-top: 72px;
 }
 .ticker-inner {
   display: inline-flex; gap: 48px; align-items: center;
   animation: ticker 35s linear infinite;
-  font-size: 13px; color: #d0d0d0;
+  font-size: 13px; font-weight: 400; color: var(--ticker-text);
 }
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 .ticker-dot { color: #666; font-size: 8px; }
 
 /* ── HERO ── */
-.hero-section {
-  background: linear-gradient(160deg, #fef3c7 0%, #fde8b0 30%, #fef9ee 70%, #fff 100%);
-  padding: 100px 5% 80px;
-  text-align: center;
-  min-height: 340px;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+.hero {
+  min-height: calc(100vh - 112px);
+  display: flex; align-items: center;
+  padding: 80px 5% 60px;
+  position: relative;
+  background: linear-gradient(135deg, #c8dfe0 0%, #d8ecec 20%, #e8f4f3 45%, #f0f8f7 70%, #f8fcfc 100%);
+  overflow: hidden;
 }
-.hero-section h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(40px, 6vw, 72px);
-  font-weight: 800; line-height: 1.1;
-  color: #111; margin-bottom: 20px;
+/* Diagonal lines background overlay */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 40px,
+    rgba(150,180,185,0.12) 40px,
+    rgba(150,180,185,0.12) 41px
+  );
+  pointer-events: none;
 }
-.hero-section p {
-  font-size: 16px; color: #555; max-width: 520px;
-  margin: 0 auto; line-height: 1.7;
+.hero-content { flex: 1; max-width: 560px; position: relative; z-index: 2; }
+.hero-welcome {
+  font-size: 12px; font-weight: 500; letter-spacing: 2px;
+  color: #555; text-transform: uppercase; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 6px;
+}
+.hero-welcome::after { content: '|'; color: #999; animation: blink 1s step-end infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+.hero h1 {
+  font-size: clamp(38px, 5.5vw, 68px);
+  font-weight: 900; line-height: 1.07;
+  margin-bottom: 22px;
+  color: var(--heading);
+  font-family: 'Inter', sans-serif;
+  letter-spacing: -1.5px;
+}
+.hero-desc {
+  font-size: 16px; color: #444; line-height: 1.7;
+  margin-bottom: 36px; max-width: 480px;
+}
+.btn-green {
+  background: var(--green-btn); color: #fff;
+  padding: 14px 32px; border-radius: 100px;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  letter-spacing: 0.2px; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: none; cursor: pointer;
+}
+.btn-green:hover { background: var(--green-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(58,107,71,0.25); }
+.btn-outline-dark {
+  border: 2px solid #ccc; color: var(--heading);
+  padding: 12px 28px; border-radius: 100px;
+  font-size: 15px; font-weight: 600; text-decoration: none;
+  transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-outline-dark:hover { border-color: #888; }
+
+.hero-visual {
+  flex: 1; display: flex; justify-content: flex-end; align-items: center;
+  position: relative; z-index: 2; padding-left: 20px;
+}
+/* The floating illustration card */
+.hero-ill-wrap { position: relative; width: 520px; height: 480px; }
+
+/* Big blue circle background */
+.ill-circle {
+  position: absolute; right: 20px; top: 50%;
+  transform: translateY(-50%);
+  width: 380px; height: 380px;
+  background: #b8cef0;
+  border-radius: 50%;
 }
 
-/* ── SECTION UTILITY ── */
-section { padding: 80px 5%; }
-.section-eyebrow {
-  font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
-  text-transform: uppercase; color: #888; margin-bottom: 14px;
+/* White card bottom-left */
+.ill-card-nav {
+  position: absolute; left: 0; bottom: 80px;
+  background: #fff; border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  min-width: 170px; z-index: 10;
 }
-.section-heading {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 800; line-height: 1.15;
-  color: #111; margin-bottom: 18px; letter-spacing: -0.3px;
+.ill-card-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: #e8f0fb; display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 10px;
 }
-.section-body {
-  font-size: 15px; color: #555; line-height: 1.8;
-}
+.ill-card-label { font-size: 16px; font-weight: 800; color: #111; }
+.ill-card-sub { font-size: 13px; color: #888; }
+.ill-card-dots { position: absolute; top: 12px; right: 14px; font-size: 18px; color: #aaa; cursor: pointer; }
 
-/* ── GREEN ICON CIRCLE ── */
-.green-icon {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--green-icon-bg);
+/* White card top-right */
+.ill-card-security {
+  position: absolute; right: 0; top: 30px;
+  background: #fff; border-radius: 12px;
+  padding: 16px 20px; min-width: 210px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.1); z-index: 10;
+}
+.ill-card-security h4 { font-size: 15px; font-weight: 700; color: #111; line-height: 1.4; }
+
+/* Drone illustration SVG area */
+.ill-drone-scene {
+  position: absolute; left: 60px; top: 40px;
+  width: 400px; height: 400px;
   display: flex; align-items: center; justify-content: center;
-  margin-bottom: 16px; flex-shrink: 0;
-}
-.green-icon svg { width: 24px; height: 24px; }
-
-/* ── MISSION SECTION ── */
-.mission-section {
-  background: #fff;
-  padding: 90px 5%;
-}
-.mission-inner {
-  display: flex; gap: 72px; align-items: center; flex-wrap: wrap;
-  max-width: 1200px; margin: 0 auto;
-}
-.mission-illustration { flex: 1; min-width: 280px; display: flex; align-items: center; justify-content: center; }
-.mission-illustration img { width: 100%; max-width: 420px; height: auto; border-radius: 16px; }
-.mission-text { flex: 1; min-width: 280px; }
-.mission-feature-box {
-  background: #f9fafb; border-radius: 18px;
-  padding: 32px 28px; margin-top: 28px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
-}
-.mission-feat h4 { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 8px; }
-.mission-feat p { font-size: 13px; color: #666; line-height: 1.7; }
-
-/* ── STATS SECTION ── */
-.stats-section {
-  background: #fff; padding: 0 5% 80px;
-}
-.stats-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
-  max-width: 1200px; margin: 0 auto;
-}
-.stat-card {
-  border-radius: 20px; padding: 42px 32px; text-align: center;
-}
-.stat-card:nth-child(1) { background: #f0fdf4; }
-.stat-card:nth-child(2) { background: #fef6ee; }
-.stat-card:nth-child(3) { background: #eef4ff; }
-.stat-card:nth-child(4) { background: #fff1f1; }
-.stat-card .num {
-  font-size: 54px; font-weight: 900; color: #111;
-  letter-spacing: -2px; line-height: 1;
-}
-.stat-card .label {
-  font-size: 14px; color: #666; margin-top: 10px; font-weight: 500;
 }
 
-/* ── VISION SECTION ── */
-.vision-section {
-  background: #f9fafb; padding: 90px 5%;
+/* ── SECTION COMMON ── */
+section { padding: 90px 5%; }
+.section-tag {
+  font-size: 12px; font-weight: 600; letter-spacing: 2px;
+  color: var(--green-btn); text-transform: uppercase; margin-bottom: 10px;
 }
-.vision-inner {
-  display: flex; gap: 80px; align-items: center; flex-wrap: wrap;
+.section-title {
+  font-size: clamp(26px, 3vw, 38px); font-weight: 800;
+  color: var(--heading); line-height: 1.15; margin-bottom: 14px;
+  letter-spacing: -0.5px;
+}
+.section-desc {
+  font-size: 15px; color: var(--muted); line-height: 1.75;
+  max-width: 580px; margin-bottom: 52px;
+}
+
+/* ── WHY SECTION ── */
+.why-section { background: #f9fafb; }
+.why-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-bottom: 52px;
+}
+.why-card {
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: 16px; padding: 28px 24px;
+  transition: all 0.3s;
+}
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+}
+.why-icon {
+  width: 50px; height: 50px;
+  background: #eef4ff; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 18px;
+}
+.why-card h3 { font-size: 18px; font-weight: 700; color: var(--heading); margin-bottom: 10px; }
+.why-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+.stats-row {
+  display: flex; gap: 0; flex-wrap: wrap;
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: 20px; overflow: hidden;
+}
+.stat-item {
+  flex: 1; min-width: 160px; text-align: center;
+  padding: 36px 24px; border-right: 1px solid var(--card-border);
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 48px; font-weight: 900; line-height: 1;
+  color: var(--heading); letter-spacing: -2px;
+}
+.stat-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+
+/* ── ABOUT ── */
+.about-section { background: linear-gradient(160deg, #e8f5f2 0%, #f0f9f7 40%, #f5fbfa 100%); }
+.about-inner { display: flex; gap: 72px; align-items: center; flex-wrap: wrap; }
+
+/* LEFT: silhouette visual */
+.about-visual { flex: 1; min-width: 300px; position: relative; display: flex; flex-direction: column; align-items: center; }
+.about-silhouette-wrap {
+  position: relative; width: 100%; max-width: 480px;
+}
+.about-silhouette-svg { width: 100%; display: block; }
+/* Stat badge cards */
+.about-stat-badges {
+  display: flex; gap: 16px; justify-content: center;
+  margin-top: -28px; position: relative; z-index: 10;
+}
+.about-stat-badge {
+  background: #1a1a1a; color: #fff;
+  border-radius: 14px; padding: 18px 22px;
+  min-width: 130px; text-align: left;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+  position: relative;
+}
+.about-stat-badge .badge-dot {
+  width: 10px; height: 10px; background: #4ade80;
+  border-radius: 50%; margin-bottom: 10px;
+}
+.about-stat-badge .badge-num {
+  font-size: 32px; font-weight: 900; line-height: 1; color: #fff; letter-spacing: -1px;
+}
+.about-stat-badge .badge-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 1.2px;
+  text-transform: uppercase; color: #999; margin-top: 5px;
+}
+
+/* RIGHT: text content */
+.about-text { flex: 1; min-width: 280px; }
+.about-text .section-desc { margin-bottom: 28px; }
+
+/* Feature cards row */
+.about-feature-cards {
+  background: #f0f5f3; border-radius: 16px;
+  padding: 28px 24px; display: grid;
+  grid-template-columns: 1fr 1fr; gap: 28px;
+  margin-bottom: 32px;
+}
+.about-feat-card {}
+.about-feat-icon {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: #b8e8cc; display: flex; align-items: center; justify-content: center;
+  margin-bottom: 14px;
+}
+.about-feat-icon svg { width: 22px; height: 22px; }
+.about-feat-card h4 { font-size: 15px; font-weight: 800; color: var(--heading); margin-bottom: 8px; }
+.about-feat-card p { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+/* ── SERVICES ── */
+.services-section { background: #fdf5ef; }
+.services-section .section-tag { text-align: center; }
+.services-section .section-title { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(28px,3.5vw,44px); }
+.services-section .section-desc { text-align: center; margin: 0 auto 56px; }
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
   max-width: 1200px; margin: 0 auto;
 }
-.vision-text { flex: 1; min-width: 280px; }
-.vision-feature-box {
-  background: #fff; border-radius: 18px;
-  padding: 32px 28px; margin-top: 28px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+.service-row {
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  gap: 20px; padding: 32px 24px;
+  border-right: 1px solid rgba(0,0,0,0.07);
+}
+.service-row:last-child { border-right: none; }
+.service-ill {
+  flex-shrink: 0; width: 140px; height: 140px;
+  display: flex; align-items: center; justify-content: center;
+}
+.service-ill svg, .service-ill img { width: 100%; height: 100%; object-fit: contain; }
+.service-text { flex: 1; }
+.service-text h3 {
+  font-size: clamp(16px, 1.4vw, 20px); font-weight: 800;
+  color: var(--heading); line-height: 1.25; margin-bottom: 10px;
+  font-family: 'Playfair Display', serif;
+}
+.service-text p { font-size: 14px; color: #555; line-height: 1.7; }
+@media (max-width: 900px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .service-row { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.07); }
+  .service-row:nth-child(odd) { border-right: 1px solid rgba(0,0,0,0.07); }
+  .service-row:last-child, .service-row:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+}
+@media (max-width: 560px) {
+  .services-grid { grid-template-columns: 1fr; }
+  .service-row { border-right: none !important; }
+}
+
+/* ── PARTNERS ── */
+.partners-section { background: #fff; padding: 56px 5%; }
+.partners-label {
+  text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 36px;
+}
+.partners-track-wrap { overflow: hidden; position: relative; }
+.partners-track-wrap::before, .partners-track-wrap::after {
+  content: ''; position: absolute; top: 0; width: 80px; height: 100%; z-index: 2;
+}
+.partners-track-wrap::before { left: 0; background: linear-gradient(to right, #fff, transparent); }
+.partners-track-wrap::after { right: 0; background: linear-gradient(to left, #fff, transparent); }
+.partners-track {
+  display: flex; gap: 48px; align-items: center;
+  animation: scroll 22s linear infinite;
+  width: max-content;
+}
+@keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.partner-chip {
+  background: #fff; border: 1px solid #e5e7eb;
+  border-radius: 10px; padding: 14px 28px;
+  display: flex; align-items: center; justify-content: center;
+  white-space: nowrap; height: 90px;
+}
+.partner-chip img {
+  height: 80px; max-width: 180px; object-fit: contain; display: block;
+}
+
+/* ── WHY CHOOSE ── */
+.choose-section { background: #eef4fb; padding: 80px 5%; }
+.choose-heading-row { margin-bottom: 36px; }
+.choose-heading-row .section-tag { color: var(--muted); }
+.choose-heading-row h2 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; color: var(--heading); line-height: 1.1; max-width: 480px; }
+.choose-inner { display: flex; gap: 24px; align-items: stretch; flex-wrap: wrap; }
+.choose-cards { display: flex; flex-direction: column; gap: 16px; flex: 0 0 300px; min-width: 260px; }
+.choose-card-dark {
+  background: #1a1a1a; border-radius: 20px; padding: 32px 28px;
+  color: #fff; flex: 1;
+}
+.choose-pct {
+  font-size: 72px; font-weight: 900; line-height: 1;
+  color: #fff; letter-spacing: -3px; margin-bottom: 6px;
+}
+.choose-pct-label { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+.choose-card-dark p { font-size: 14px; color: #aaa; line-height: 1.75; text-align: center; }
+.choose-image { flex: 1; min-width: 280px; }
+.choose-image img {
+  width: 100%; height: 100%; min-height: 420px;
+  object-fit: cover; border-radius: 20px; display: block;
+}
+
+/* ── TRAINING ── */
+.training-section { background: #fff; }
+.training-inner { display: flex; gap: 80px; align-items: flex-start; flex-wrap: wrap; }
+.training-text { flex: 1; min-width: 280px; }
+.aicte-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #f0fdf4; border: 1px solid #bbf7d0;
+  border-radius: 10px; padding: 10px 18px; margin-bottom: 28px;
+  font-size: 13px; font-weight: 700; color: var(--green-btn);
+}
+.training-points { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
+.training-point { display: flex; gap: 14px; }
+.tp-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: #f0fdf4; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.tp-text h4 { font-size: 15px; font-weight: 700; color: var(--heading); margin-bottom: 3px; }
+.tp-text p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.training-image { flex: 1; min-width: 280px; }
+.training-image-card {
+  background: linear-gradient(135deg, #e8f4f2, #d4e8e4);
+  border-radius: 20px; padding: 40px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 16px; text-align: center; min-height: 50px;
+}
+.training-image-card .big-icon { font-size: 80px; }
+.training-image-card h3 { font-size: 20px; font-weight: 800; color: var(--heading); line-height: 1.3; }
+.training-image-card p { font-size: 14px; color: #555; }
+
+/* ── PRODUCTS ── */
+.products-section { background: #f9fafb; }
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+.product-card {
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: 16px; overflow: hidden; transition: all 0.3s;
+  display: flex; flex-direction: column;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+.product-badge {
+  position: absolute; top: 12px; left: 12px;
+  background: #00c8b4; color: #fff;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.3px;
+  padding: 4px 10px; border-radius: 6px;
+}
+.product-img-wrap {
+  position: relative;
+  height: 180px; background: #f8f9fa;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-img-wrap img { width: 100%; height: 180px; object-fit: cover; display: block; }
+.product-body { padding: 16px 16px 20px; flex: 1; display: flex; flex-direction: column; }
+.product-body h4 { font-size: 15px; font-weight: 700; color: var(--heading); line-height: 1.4; margin-bottom: 6px; }
+.product-ship { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+.product-price { font-size: 22px; font-weight: 900; color: var(--heading); margin-bottom: 16px; letter-spacing: -0.5px; }
+.product-actions { margin-top: auto; }
+.btn-buy-wa {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  background: #7c3aed; color: #fff;
+  border: none; border-radius: 10px;
+  padding: 12px 16px; font-size: 14px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-buy-wa:hover { background: #6d28d9; transform: translateY(-1px); }
+
+/* ── FOUNDER ── */
+.founder-section { background: #fff; }
+.founder-card {
+  background: linear-gradient(135deg, #e8f4f2, #f0f8f7);
+  border: 1px solid #c8e6e2;
+  border-radius: 24px; padding: 48px 52px;
+  display: flex; gap: 48px; align-items: center; flex-wrap: wrap;
+}
+.founder-quote { flex: 1; min-width: 280px; }
+.quote-mark {
+  font-size: 72px; line-height: 0.7; color: var(--green-btn);
+  font-family: Georgia, serif; margin-bottom: 18px; display: block;
+}
+.founder-quote p { font-size: 17px; line-height: 1.8; color: #444; font-style: italic; margin-bottom: 24px; }
+.founder-name { font-size: 17px; font-weight: 800; color: var(--heading); }
+.founder-role { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.founder-avatar {
+  width: 130px; height: 130px; flex-shrink: 0;
+  background: #c8dfe0; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 56px; border: 4px solid #fff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ── TESTIMONIALS ── */
+.testimonials-section { background: #f9fafb; text-align: center; }
+.testimonials-section .section-desc { margin: 0 auto 40px; }
+.video-embed {
+  max-width: 700px; margin: 0 auto;
+  border-radius: 16px; overflow: hidden;
   border: 1px solid var(--card-border);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  position: relative; background: #000;
+  cursor: pointer;
 }
-.vision-feat h4 { font-size: 16px; font-weight: 800; color: #111; margin-bottom: 8px; }
-.vision-feat p { font-size: 13px; color: #666; line-height: 1.7; }
-.vision-illustration {
-  flex: 1; min-width: 280px;
+.video-embed img {
+  width: 100%; height: 394px; display: block;
+  object-fit: cover; opacity: 0.85;
+  transition: opacity 0.2s;
+}
+.video-embed:hover img { opacity: 0.7; }
+.video-play-btn {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px; height: 72px;
+  background: rgba(255,0,0,0.92);
+  border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.35);
+  pointer-events: none;
 }
-.vision-illustration img { width: 100%; max-width: 440px; height: auto; border-radius: 16px; }
+.video-embed:hover .video-play-btn {
+  transform: translate(-50%, -50%) scale(1.1);
+  background: rgb(255,0,0);
+}
+.video-play-btn svg { width: 28px; height: 28px; fill: #fff; margin-left: 4px; }
+.video-caption { margin-top: 16px; font-size: 14px; color: var(--muted); font-style: italic; }
 
-/* ── TEAM SECTION ── */
-.team-section {
-  background: #fff; padding: 90px 5%;
+/* ── PROJECTS ── */
+.projects-section { background: #fff; }
+.projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+.project-card {
+  background: #fff; border: 1px solid var(--card-border);
+  border-radius: 16px; overflow: hidden; transition: all 0.3s;
 }
-.team-section h2 {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(30px, 4vw, 48px);
-  font-weight: 800; text-align: center;
-  color: #111; margin-bottom: 56px;
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); }
+.project-img {
+  height: 170px; background: linear-gradient(135deg, #e8f0fb, #d4e4f8);
+  display: flex; align-items: center; justify-content: center; font-size: 64px;
 }
-.team-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 24px; max-width: 1100px; margin: 0 auto;
+.project-body { padding: 20px; }
+.project-body h4 { font-size: 15px; font-weight: 700; color: var(--heading); margin-bottom: 8px; }
+.project-body p { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+.watch-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--link-color); font-size: 13px; font-weight: 600; text-decoration: none;
 }
-.team-card {
-  background: #fff; border: 1px solid #e5e7eb;
-  border-radius: 20px; padding: 40px 28px 32px;
-  display: flex; flex-direction: column; align-items: center;
-  text-align: center; transition: all 0.3s;
-}
-.team-card:hover { transform: translateY(-5px); box-shadow: 0 12px 40px rgba(0,0,0,0.09); }
-.team-avatar {
-  width: 110px; height: 110px; border-radius: 50%;
-  object-fit: cover; margin-bottom: 22px;
-  border: 3px solid #f0f0f0;
-}
-.team-card h3 { font-size: 18px; font-weight: 800; color: #111; margin-bottom: 5px; }
-.team-card span { font-size: 14px; color: #888; font-weight: 500; }
+.watch-link:hover { color: var(--green-btn); }
 
-/* ── WHY / CONTACT SECTION ── */
-.contact-section {
-  background: #f9fafb; padding: 90px 5%;
+/* ── FAQ ── */
+.faq-section { background: #f9fafb; }
+.faq-grid { max-width: 780px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid #e5e7eb; }
+.faq-q {
+  width: 100%; background: none; border: none; color: var(--heading);
+  font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;
+  padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between;
+  align-items: center; gap: 16px; text-align: left; transition: color 0.2s;
 }
-.contact-inner {
-  display: flex; gap: 80px; align-items: center; flex-wrap: wrap;
-  max-width: 1200px; margin: 0 auto;
-}
-.contact-text { flex: 1; min-width: 280px; }
-.contact-text .section-heading { margin-bottom: 28px; }
-.contact-card {
-  background: #fff; border: 1px solid #e5e7eb;
-  border-radius: 20px; padding: 36px 32px;
-}
-.contact-card h3 {
-  font-family: 'Playfair Display', serif;
-  font-size: 22px; font-weight: 800;
-  color: #111; margin-bottom: 6px;
-}
-.contact-card .addr { font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 28px; }
-.contact-row {
-  display: flex; gap: 14px; align-items: flex-start;
-  margin-bottom: 20px;
-}
-.contact-row:last-child { margin-bottom: 0; }
-.contact-icon-wrap {
-  width: 42px; height: 42px; border-radius: 10px;
-  background: #f0fdf4; display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-.contact-icon-wrap svg { width: 20px; height: 20px; stroke: #3a6b47; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.contact-row-text strong { font-size: 14px; font-weight: 700; color: #111; display: block; margin-bottom: 2px; }
-.contact-row-text span { font-size: 13px; color: #666; line-height: 1.5; display: block; }
-.contact-visual {
-  flex: 1; min-width: 280px;
-  display: flex; align-items: center; justify-content: center;
-}
-.contact-visual img { width: 100%; max-width: 420px; height: auto; border-radius: 16px; }
+.faq-q:hover { color: var(--green-btn); }
+.faq-q .faq-arrow { transition: transform 0.3s; flex-shrink: 0; color: #aaa; font-size: 20px; font-weight: 300; }
+.faq-q.open .faq-arrow { transform: rotate(45deg); color: var(--green-btn); }
+.faq-a { display: none; padding: 0 0 20px; font-size: 14px; color: var(--muted); line-height: 1.75; }
+.faq-a.open { display: block; }
 
 /* ── CTA ── */
 .cta-section {
   background: linear-gradient(135deg, #2f5a3b, #3a6b47);
   padding: 80px 5%; text-align: center; color: #fff;
 }
-.cta-section h2 { font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; margin-bottom: 14px; color: #fff; }
+.cta-section h2 { font-size: clamp(26px, 3.5vw, 42px); font-weight: 800; margin-bottom: 14px; letter-spacing: -0.5px; color: #fff; }
 .cta-section p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
 .btn-white {
   background: #fff; color: var(--green-btn);
   padding: 14px 32px; border-radius: 100px;
   font-size: 15px; font-weight: 700; text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
 }
 .btn-white:hover { background: #f0f0f0; transform: translateY(-1px); }
 .btn-outline-white {
   border: 2px solid rgba(255,255,255,0.5); color: #fff;
   padding: 12px 28px; border-radius: 100px;
   font-size: 15px; font-weight: 600; text-decoration: none;
-  display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
 }
 .btn-outline-white:hover { border-color: rgba(255,255,255,0.9); }
 
 /* ── FOOTER ── */
-footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
+footer {
+  background: #111827; color: #d1d5db;
+  padding: 64px 5% 32px;
+}
 .footer-grid {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px; margin-bottom: 48px;
 }
-.footer-brand-name { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+@media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } }
 .footer-brand p { font-size: 14px; color: #9ca3af; line-height: 1.75; margin: 14px 0 22px; max-width: 280px; }
+.footer-brand-name { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
 .footer-contact { font-size: 14px; color: #9ca3af; line-height: 1.9; }
 .footer-contact strong { color: #d1d5db; }
 .footer-col h5 { font-size: 12px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; margin-bottom: 18px; }
@@ -298,18 +627,15 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
+  .hero { flex-direction: column; text-align: center; min-height: auto; padding: 60px 5% 40px; }
+  .hero-desc { max-width: 100%; }
+  .hero-visual { display: none; }
+  .about-inner, .choose-inner, .training-inner, .founder-card { flex-direction: column; }
   nav { padding: 0 5%; }
   .nav-links { display: none; }
-  .mission-inner, .vision-inner, .contact-inner { flex-direction: column; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .team-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-  .mission-feature-box, .vision-feature-box { grid-template-columns: 1fr; }
-}
-@media (max-width: 560px) {
-  .team-grid { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { flex-direction: row; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--card-border); }
+  .stat-item:last-child { border-bottom: none; }
 }
 </style>
 </head>
@@ -318,14 +644,16 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
 <!-- NAV -->
 <nav>
   <a href="index.html" class="nav-logo">
-    <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780456849/favicon_2_tp96mf.png" alt="Gaganyan Aerospace Logo" />
+    <!-- Logo Image -->
+    <img class="nav-logo-svg" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780456849/favicon_2_tp96mf.png" alt="Gaganyan Aerospace Logo" />
+
   </a>
   <ul class="nav-links">
-    <li><a href="index.html">HOME</a></li>
-    <li><a href="index.html#services">SERVICES</a></li>
-    <li><a href="about.html" class="active">ABOUT</a></li>
+    <li><a href="index.html" style="font-weight:600;">HOME</a></li>
+    <li><a href="#services">SERVICES</a></li>
+    <li><a href="about.html">ABOUT</a></li>
     <li><a href="#">BLOG</a></li>
-    <li><a href="index.html#contact">CONTACT</a></li>
+    <li><a href="#contact">CONTACT</a></li>
     <li><a href="https://chat.whatsapp.com/IgRP4Hm8J4B0c0K6Nhpb0U" target="_blank" class="nav-cta">Community</a></li>
   </ul>
 </nav>
@@ -345,229 +673,508 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
 </div>
 
 <!-- HERO -->
-<div class="hero-section">
-  <h1>About<br>"Gaganyan Aerospace"</h1>
-  <p>Our mission is to utilize modern technology to aid society and educate young talents in the field of drone technology.</p>
-</div>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-welcome">Welcome To Gaganyan Aerospace</div>
+    <h1>Drone Industry<br>Specialized in<br>Autonomous<br>Flights</h1>
+    <p class="hero-desc">The future of Drone Technology is taking flight. We're developing cutting-edge drone projects to transform Security, Surveillance, Rescue, Agriculture industries. Join the revolution.</p>
+    <a href="#contact" class="btn-green">Request a Demo</a>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-ill-wrap">
+      <!-- Background circle -->
+      <div class="ill-circle"></div>
 
-<!-- MISSION SECTION -->
-<section class="mission-section">
-  <div class="mission-inner">
-    <!-- LEFT: Illustration -->
-    <div class="mission-illustration">
-      <!-- MISSION ILLUSTRATION IMAGE: Replace the src URL below with your actual image -->
-      <img
-        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460801/eLZtEHg3ckDSjq8FjzTVROoYAS4_hbldw0.avif"
-        alt="Team meeting illustration"
-      />
+      <!-- Security card top-right -->
+      <div class="ill-card-security">
+        <h4>Redefining Security<br>with Drones, Robotics<br>and AI.</h4>
+      </div>
+
+      <!-- Drone scene SVG -->
+      <div class="ill-drone-scene">
+        <!-- HERO IMAGE: Replace URL below to change the hero illustration -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780454515/1nAGiGtWV8DJpKDFYwzQaNzpU_1_k8dx6u.avif" alt="Drone operator" style="width:380px;height:380px;object-fit:cover;border-radius:50%;" />
+      </div>
+
+      <!-- Autonomous navigation card bottom-left -->
+      <div class="ill-card-nav">
+        <div class="ill-card-dots">⋮</div>
+        <div class="ill-card-icon">✈️</div>
+        <div class="ill-card-label">AUTONOMOUS</div>
+        <div class="ill-card-sub">Navigation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-inner">
+    <!-- LEFT: Silhouette + Stat Badges -->
+    <div class="about-visual">
+      <div class="about-silhouette-wrap">
+        <!-- ABOUT TEAM IMAGE: Replace URL below to change the team photo -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780454515/hF9pGiQC1vGTreeLXqkHmzQvA_mmwuza.avif" alt="Team" class="about-silhouette-svg" style="border-radius:16px;" />
+      </div>
+      <!-- Stat badge cards -->
+      <div class="about-stat-badges">
+        <div class="about-stat-badge">
+          <div class="badge-dot"></div>
+          <div class="badge-num">3</div>
+          <div class="badge-label">Patents<br>Published</div>
+        </div>
+        <div class="about-stat-badge">
+          <div class="badge-dot"></div>
+          <div class="badge-num">5+</div>
+          <div class="badge-label">Happy<br>Clients</div>
+        </div>
+      </div>
     </div>
 
-    <!-- RIGHT: Text -->
-    <div class="mission-text">
-      <div class="section-eyebrow">EMPOWERING SUCCESS</div>
-      <h2 class="section-heading">Our Mission for your success</h2>
-      <p class="section-body">At Gaganyan Aerospace, we believe in the power of innovation to drive success. By providing cutting-edge drone technology, customized solutions, and expert training, we empower businesses and individuals to reach new heights. Together, we're building a future where technology and creativity fuel sustainable growth and success.</p>
+    <!-- RIGHT: Text content -->
+    <div class="about-text">
+      <div class="section-tag">About Us</div>
+      <h2 class="section-title">We give the best Drones and IoT Solutions</h2>
+      <p class="section-desc">Our mission is to bridge technology and functionality, creating reliable, efficient, and sustainable drone systems that solve real-world challenges. Whether it's precision agriculture, surveillance, logistics, or beyond, we strive to set new standards in the drone industry.</p>
 
-      <div class="mission-feature-box">
-        <div class="mission-feat">
-          <div class="green-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2a5 5 0 0 1 5 5c0 2.76-2.24 5-5 5S7 9.76 7 7a5 5 0 0 1 5-5z"/>
-              <path d="M3 21c0-4.42 4.03-8 9-8s9 3.58 9 8"/>
+      <div class="about-feature-cards">
+        <!-- Best Solution -->
+        <div class="about-feat-card">
+          <div class="about-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5a3b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/>
+              <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
             </svg>
           </div>
           <h4>Best Solution</h4>
           <p>Discover the best solution for your needs. Solve challenges, streamline processes, and achieve optimal outcomes.</p>
         </div>
-        <div class="mission-feat">
-          <div class="green-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-              <polyline points="17 6 23 6 23 12"/>
+        <!-- Innovation -->
+        <div class="about-feat-card">
+          <div class="about-feat-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#2f5a3b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"/>
             </svg>
           </div>
           <h4>Innovation-Driven Excellence</h4>
           <p>We are committed to revolutionizing industries with cutting-edge drone technology.</p>
         </div>
       </div>
+
+      <a href="#" class="btn-green">More About Us →</a>
     </div>
   </div>
 </section>
 
-<!-- STATS SECTION -->
-<section class="stats-section">
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="num">3+</div>
-      <div class="label">Years of Experience</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">10+</div>
-      <div class="label">Active Clients</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">15+</div>
-      <div class="label">Awards Winning</div>
-    </div>
-    <div class="stat-card">
-      <div class="num">97%</div>
-      <div class="label">Satisfied Client</div>
-    </div>
-  </div>
-</section>
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="section-tag">Our Services</div>
+  <h2 class="section-title">What Services We Offer</h2>
+  <p class="section-desc">We offer a range of services, including</p>
+  <div class="services-grid">
 
-<!-- VISION SECTION -->
-<section class="vision-section">
-  <div class="vision-inner">
-    <!-- LEFT: Text -->
-    <div class="vision-text">
-      <div class="section-eyebrow">SHAPING FUTURES</div>
-      <h2 class="section-heading">Gaganyan Aerospace's Vision for Transformative Growth</h2>
-      <p class="section-body">We are dedicated to shaping the future through groundbreaking drone technology and innovative solutions. By empowering businesses, industries, and individuals with the tools they need to succeed, we're helping create a world where technology drives progress, growth, and a better tomorrow.</p>
-
-      <div class="vision-feature-box">
-        <div class="vision-feat">
-          <div class="green-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2a5 5 0 0 1 5 5c0 2.76-2.24 5-5 5S7 9.76 7 7a5 5 0 0 1 5-5z"/>
-              <circle cx="12" cy="12" r="1"/>
-              <path d="M3 21c0-4.42 4.03-8 9-8s9 3.58 9 8"/>
-            </svg>
-          </div>
-          <h4>Innovative Solutions</h4>
-          <p>We are committed to delivering cutting-edge drone technology and solutions that transform industries and create new opportunities for growth and success.</p>
-        </div>
-        <div class="vision-feat">
-          <div class="green-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-              <polyline points="17 6 23 6 23 12"/>
-            </svg>
-          </div>
-          <h4>Empowering Progress</h4>
-          <p>By equipping businesses and individuals with the tools, knowledge, and expertise they need, we help shape a future of continuous innovation and advancement.</p>
-        </div>
+    <!-- Agricultural Drone Solutions -->
+    <div class="service-row">
+      <div class="service-ill">
+        <!-- SERVICE IMAGE (Agricultural Drone Solutions): Replace URL below -->
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=160&h=160&fit=crop" alt="Agricultural drone" style="width:140px;height:140px;object-fit:contain;border-radius:12px;" />
+      </div>
+      <div class="service-text">
+        <h3>Agricultural Drone Solutions</h3>
+        <p>Enhance farming efficiency with drones designed for precision spraying, crop health monitoring, and yield optimization. Our solutions are tailored to meet the needs of modern, smart agriculture.</p>
       </div>
     </div>
 
-    <!-- RIGHT: Growth chart illustration -->
-    <div class="vision-illustration">
-      <!-- VISION / GROWTH CHART IMAGE: Replace the src URL below with your actual image -->
-      <img
-        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460800/PcXIHjGlcxHlqNqKHekjQ3A20_pqyrap.webp"
-        alt="Gaganyan Aerospace growth vision chart"
-      />
-    </div>
-  </div>
-</section>
-
-<!-- TEAM SECTION -->
-<section class="team-section">
-  <h2>Meet Our Team</h2>
-  <div class="team-grid">
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Sai Suraj (CEO): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460832/lvZRJqlVwCuGkj5t8NACDzc3zw_aiiwx8.avif" alt="Sai Suraj" />
-      <h3>Sai Suraj</h3>
-      <span>CEO</span>
-    </div>
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Sitha Ramaswamy (Operations Officer): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460832/HXk4eVScovzPRt6tbNlT377VRnQ_ntpiru.webp" alt="Sitha Ramaswamy" />
-      <h3>Sitha Ramaswamy</h3>
-      <span>Operations Officer</span>
-    </div>
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Vinay Kumar (Finserv Officer): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460830/EcLgOOybRrYwG1RzpCqkCLo50_xhdswn.webp" alt="Vinay Kumar" />
-      <h3>Vinay Kumar</h3>
-      <span>Finserv Officer</span>
-    </div>
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Rohith Kumar (HR Manager): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460833/Yt8L8TDnEpwvohVZVJWVGYKoCc_peuyou.webp" alt="Rohith Kumar" />
-      <h3>Rohith Kumar</h3>
-      <span>HR Manager</span>
-    </div>
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Sai Venkat (Technology Officer): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1779981093/WhatsApp_Image_2026-05-13_at_12.02.13_PM_woggf0.jpg" alt="Sai Venkat" />
-      <h3>Sai Venkat</h3>
-      <span>Technology Officer</span>
-    </div>
-
-    <div class="team-card">
-      <!-- TEAM PHOTO - Jaya Surya (Innovation Officer): Replace src URL below -->
-      <img class="team-avatar" src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780460820/qWQXyir6aaAPUE3pEPK0rKN76Lo_q4lko5.webp" alt="Jaya Surya" />
-      <h3>Jaya Surya</h3>
-      <span>Innovation Officer</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- WHY CHOOSE US / CONTACT -->
-<section class="contact-section">
-  <div class="contact-inner">
-    <!-- LEFT: Text + Card -->
-    <div class="contact-text">
-      <div class="section-eyebrow">WHY CHOOSE US</div>
-      <h2 class="section-heading">We value integrity and professionalism.</h2>
-
-      <div class="contact-card">
-        <h3>Location</h3>
-        <p class="addr">Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</p>
-
-        <div class="contact-row">
-          <div class="contact-icon-wrap">
-            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/></svg>
-          </div>
-          <div class="contact-row-text">
-            <strong>Email</strong>
-            <span>gaganyanaerospace@gmail.com</span>
-          </div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="contact-row-text">
-            <strong>Location</strong>
-            <span>Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</span>
-          </div>
-        </div>
-
-        <div class="contact-row">
-          <div class="contact-icon-wrap">
-            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div class="contact-row-text">
-            <strong>Phone Number</strong>
-            <span>+91 77027 26262</span>
-          </div>
-        </div>
+    <!-- Customized Drone Solutions -->
+    <div class="service-row">
+      <div class="service-ill">
+        <!-- SERVICE IMAGE (Customized Drone): Replace URL below -->
+        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=160&h=160&fit=crop" alt="Customized drone" style="width:140px;height:140px;object-fit:contain;border-radius:12px;" />
+      </div>
+      <div class="service-text">
+        <h3>Customized Drone Solutions</h3>
+        <p>We create bespoke drones to fit your unique requirements, whether for surveillance, delivery, or industrial applications. Designed to solve your specific challenges with precision and innovation.</p>
       </div>
     </div>
 
-    <!-- RIGHT: Location / Pin illustration -->
-    <div class="contact-visual">
-      <!-- CONTACT / LOCATION IMAGE: Replace the src URL below with your actual image (e.g. map pin illustration, office photo, or map screenshot) -->
-      <img
-        src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780462787/FZznIrXpt9Y5ljQbcjfhm2kGFI_mdzwet.webp"
-        alt="Gaganyan Aerospace location"
-      />
+    <!-- IoT Solutions -->
+    <div class="service-row">
+      <div class="service-ill">
+        <!-- SERVICE IMAGE (IoT Solutions): Replace URL below -->
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=160&h=160&fit=crop" alt="IoT solutions" style="width:140px;height:140px;object-fit:contain;border-radius:12px;" />
+      </div>
+      <div class="service-text">
+        <h3>IoT Solutions</h3>
+        <p>Delivering smart IoT solutions to help businesses optimize operations, monitor systems in real-time, and achieve seamless connectivity across devices. Perfect for industries like manufacturing, healthcare, and logistics.</p>
+      </div>
+    </div>
+
+    <!-- Training and Education -->
+    <div class="service-row">
+      <div class="service-ill">
+        <!-- SERVICE IMAGE (Training and Education): Replace URL below -->
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=160&h=160&fit=crop" alt="Training and education" style="width:140px;height:140px;object-fit:contain;border-radius:12px;" />
+      </div>
+      <div class="service-text">
+        <h3>Training and Education</h3>
+        <p>Empower individuals and businesses with comprehensive drone training programs. From basics to advanced operations, we equip you with the skills to succeed in the drone industry.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- WHY GAGANYAN -->
+<section class="why-section" id="about">
+  <div class="section-tag">Why Choose Us</div>
+  <h2 class="section-title">Why Gaganyan Aerospace</h2>
+  <p class="section-desc">At Gaganyan Aerospace, we're not just building drones; we're building the future. Our company stands out because of:</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Innovative Edge</h3>
+      <p>We combine cutting-edge software and hardware expertise to create reliable, efficient, and groundbreaking drone solutions.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">👥</div>
+      <h3>Dedicated Team</h3>
+      <p>With a team of passionate professionals, we bring diverse skills and perspectives together to solve real-world problems.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <h3>Proven Commitment</h3>
+      <p>We're driven by a commitment to quality, sustainability, and shaping the future of industries with drone technology.</p>
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-item">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Patents Published</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Happy Clients</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Team Members</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Drone Projects</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- PARTNERS -->
+<section class="partners-section">
+  <div class="partners-label">Technology Partners</div>
+  <div class="partners-track-wrap">
+    <div class="partners-track">
+      <!-- PARTNER LOGO 1 (EFT Drones): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/4CWE5PdB6UfuRHEIQHnGfyolblw_qdhrw7.avif" alt="SAG" /></div>
+      <!-- PARTNER LOGO 2 (SKYRC): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457920/OcWzlmYetZq5bJYxayQwn0MJ1u8_z0wfp0.avif" alt="PACE" /></div>
+      <!-- PARTNER LOGO 3 (Herewin): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/hZEdid2eCNmykIhxEHxRtLjz8QI_ze7p5n.avif" alt="Vishnu" /></div>
+      <!-- PARTNER LOGO 4 (AICTE): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/UblZIl9S76nqFMemWC14k4FNI_agho13.avif" alt="WISE" /></div>
+      <!-- PARTNER LOGO 5 (IoT Alliance): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/RxH3b7bTjAyeYrcis1SZSPsH3jM_iesmvj.avif" alt="Geetham School" /></div>
+      <!-- PARTNER LOGO 6 (Robotics India): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/BOprop9inmBuO4Zdv23zibbcO9c_bdsxnv.avif" alt="GCode" /></div>
+      <!-- Duplicate set for seamless loop -->
+      <!-- PARTNER LOGO 1 (EFT Drones): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/4CWE5PdB6UfuRHEIQHnGfyolblw_qdhrw7.avif" alt="SAG" /></div>
+      <!-- PARTNER LOGO 2 (SKYRC): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457920/OcWzlmYetZq5bJYxayQwn0MJ1u8_z0wfp0.avif" alt="PACE" /></div>
+      <!-- PARTNER LOGO 3 (Herewin): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/hZEdid2eCNmykIhxEHxRtLjz8QI_ze7p5n.avif" alt="Vishnu" /></div>
+      <!-- PARTNER LOGO 4 (AICTE): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/UblZIl9S76nqFMemWC14k4FNI_agho13.avif" alt="WISE" /></div>
+      <!-- PARTNER LOGO 5 (IoT Alliance): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/RxH3b7bTjAyeYrcis1SZSPsH3jM_iesmvj.avif" alt="Geetham School" /></div>
+      <!-- PARTNER LOGO 6 (Robotics India): Replace URL below -->
+      <div class="partner-chip"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457918/BOprop9inmBuO4Zdv23zibbcO9c_bdsxnv.avif" alt="GCode" /></div>
+      <!-- Duplicate set for seamless loop -->
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section class="training-section">
+  <div class="training-inner">
+    <div class="training-text">
+      <div class="section-tag">Trainings and Education</div>
+      <h2 class="section-title">Learn, Innovate, Succeed: AICTE-Approved Training Programs</h2>
+      <div class="aicte-badge">🏅 Approved By AICTE</div>
+      <p style="font-size:15px;color:#555;margin-bottom:28px;">Our training programs meet the high standards set by AICTE, ensuring exceptional quality and credibility. With a focus on Drones and IoT, we provide hands-on learning experiences.</p>
+      <div class="training-points">
+        <div class="training-point">
+          <div class="tp-icon">📜</div>
+          <div class="tp-text">
+            <h4>AICTE Approval</h4>
+            <p>Our programs are officially approved by AICTE, ensuring they meet the highest educational and industry standards.</p>
+          </div>
+        </div>
+        <div class="training-point">
+          <div class="tp-icon">🚀</div>
+          <div class="tp-text">
+            <h4>Career Advancement</h4>
+            <p>Our training prepares you for careers in agriculture, surveillance, logistics, and IoT automation.</p>
+          </div>
+        </div>
+        <div class="training-point">
+          <div class="tp-icon">🛠️</div>
+          <div class="tp-text">
+            <h4>Hands-On Experience</h4>
+            <p>Gain real-world experience through hands-on projects, live simulations, and in-field drone operations.</p>
+          </div>
+        </div>
+        <div class="training-point">
+          <div class="tp-icon">👨‍🏫</div>
+          <div class="tp-text">
+            <h4>Expert Mentors</h4>
+            <p>Our instructors are industry experts and certified professionals with vast experience in drones and IoT.</p>
+          </div>
+        </div>
+      </div>
+      <a href="mailto:gaganyanaerospace@gmail.com" class="btn-green">Contact Us →</a>
+    </div>
+    <div class="training-image">
+      <div class="training-image-card">
+        <!-- TRAINING IMAGE: Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457230/U4m7atWXwkaFcc8lRKONpM0DpxE_zkfwaz.avif" alt="Drone training" style="width:100%;min-height:280px;object-fit:cover;border-radius:12px;" />
+        <h3>AICTE Certified Drone Training</h3>
+        <p>Ready to start your journey in innovation and technology? Enroll today and take the first step toward endless possibilities!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section">
+  <div class="section-tag">Our Products</div>
+  <h2 class="section-title">Our Products</h2>
+  <p class="section-desc">High-quality drone equipment and accessories for professional use.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Featured</span>
+        <!-- PRODUCT IMAGE (EFT E610-P): Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1777818286/x8_png_ak9xvw.png" alt="EFT E610-P" />
+      </div>
+      <div class="product-body">
+        <h4>EFT E610-P (X8 Drone) with 10L Tank</h4>
+        <p class="product-ship">EFT</p>
+        <div class="product-price">Contact Us</div>
+        <div class="product-actions">
+          <a href="https://wa.me/917702726262?text=Hi%2C%20I%27m%20interested%20in%20EFT%20E620-P%20(X9%20Drone)%20with%2010L%20Tank" target="_blank" class="btn-buy-wa">🛒 Buy</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Featured</span>
+        <!-- PRODUCT IMAGE (EFT E620-P): Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780458798/hdYgwghHNs7eYXloEsNiuYi63I_pnkcaj.webp" alt="EFT E620-P" />
+      </div>
+      <div class="product-body">
+        <h4>EFT E620-P (X9 Drone) with 10L Tank</h4>
+        <p class="product-ship">EFT</p>
+        <div class="product-price">Contact Us</div>
+        <div class="product-actions">
+          <a href="https://wa.me/917702726262?text=Hi%2C%20I%27m%20interested%20in%20EFT%20E620-P%20(X9%20Drone)%20with%2010L%20Tank" target="_blank" class="btn-buy-wa">🛒 Buy</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Best Seller</span>
+        <!-- PRODUCT IMAGE (SKYRC PC 3000W): Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780458797/tAWm6abRRPTWUliyXgaHfdAUo_fbqu6a.avif" alt="SKYRC 3000W" />
+      </div>
+      <div class="product-body">
+        <h4>SKYRC PC 3000W Smart Charger</h4>
+        <p class="product-ship">SkyRC</p>
+        <div class="product-price">Contact Us</div>
+        <div class="product-actions">
+          <a href="https://wa.me/917702726262?text=Hi%2C%20I%27m%20interested%20in%20EFT%20E620-P%20(X9%20Drone)%20with%2010L%20Tank" target="_blank" class="btn-buy-wa">🛒 Buy</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Featured</span>
+        <!-- PRODUCT IMAGE (Electrostatic Nozzles): Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1777885346/Cn2.jpg_r8odsv.jpg" alt="Nozzles" />
+      </div>
+      <div class="product-body">
+        <h4>3L/Min Electro Static Centrifugal Nozzles</h4>
+        <p class="product-ship">AG</p>
+        <div class="product-price">Contact Us</div>
+        <div class="product-actions">
+          <a href="https://wa.me/917702726262?text=Hi%2C%20I%27m%20interested%20in%203L%2FMin%20Electro%20Static%20Centrifugal%20Nozzles" target="_blank" class="btn-buy-wa">🛒 Buy</a>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Best Seller</span>
+        <!-- PRODUCT IMAGE (SKYRC PC 1080W): Replace URL below -->
+        <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1777885505/SkyRC_1080.jpg_m7lz71.jpg" alt="SKYRC 1080W" />
+      </div>
+      <div class="product-body">
+        <h4>SKYRC PC 1080W Smart Charger</h4>
+        <p class="product-ship">SkyRC</p>
+        <div class="product-price">Contact Us</div>
+        <div class="product-actions">
+          <a href="https://wa.me/917702726262?text=Hi%2C%20I%27m%20interested%20in%20SKYRC%20PC%201080W%20Smart%20Charger" target="_blank" class="btn-buy-wa">🛒 Buy</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- FOUNDER QUOTE -->
+<section class="founder-section">
+  <div class="founder-card">
+    <div class="founder-quote">
+      <span class="quote-mark">"</span>
+      <p>As the Managing Director of Gaganyan Aerospace, I am incredibly proud of the progress our team of 12 has made in bringing this vision to life. Our startup is not just about drones; it's about pioneering solutions that solve real-world problems and shape the future of industries. We are committed to innovation, quality, and sustainability, and we believe that the possibilities with drone technology are endless. Together, we are pushing boundaries and redefining what's possible.</p>
+      <div class="founder-name">Dr. Rangarao Orugu</div>
+      <div class="founder-role">Managing Director, Gaganyan Aerospace</div>
+    </div>
+    <div class="founder-avatar" style="overflow:hidden;background:none;">
+      <!-- FOUNDER PHOTO: Replace URL below -->
+      <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780454744/89UjWZmgYfghl2uQ0YxVbPbuSc_dqcdnk.avif" alt="Dr. Rangarao Orugu" style="width:130px;height:130px;object-fit:cover;border-radius:50%;" />
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-tag" style="text-align:center;">Testimonials</div>
+  <h2 class="section-title" style="text-align:center;">What Our Clients Say</h2>
+  <p class="section-desc">Hear directly from those who've experienced our training programs firsthand.</p>
+  <!-- VIDEO EMBED: Replace VIDEO_ID below (both occurrences) to change the video -->
+  <div class="video-embed" id="videoEmbed" onclick="playVideo()">
+    <img id="videoThumb" src="https://img.youtube.com/vi/nZbpO34K_RA/maxresdefault.jpg" alt="Testimonial Video" />
+    <div class="video-play-btn" id="playBtn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7z"/>
+      </svg>
+    </div>
+  </div>
+  <script>
+    function playVideo() {
+      var embed = document.getElementById('videoEmbed');
+      embed.innerHTML = '<iframe src="https://youtu.be/nZbpO34K_RA?si=fpAldoQ-pwQdBsTH" allow="autoplay; encrypted-media" allowfullscreen style="width:100%;height:394px;display:block;border:none;"></iframe>';
+      embed.style.cursor = 'default';
+    }
+  </script>
+  <p class="video-caption">Secretary of Geetham's School, Singarayakonda — shares thoughts on how our training empowered students and inspired innovation in drone technology. 🚀✨</p>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects-section">
+  <div class="section-tag">Projects</div>
+  <h2 class="section-title">Watch Out Our Latest Innovations</h2>
+  <p class="section-desc">Discover the future of drone technology! Watch our latest videos to see how we're pushing the boundaries of innovation and delivering cutting-edge solutions that can transform industries.</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <!-- PROJECT IMAGE (Women Protection Drone): Replace URL below -->
+      <div class="project-img"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457139/ril7U5nj9WNsOuLY6ChC5p0UL0_hh1hpe.avif" alt="Women Protection Drone" style="width:100%;height:170px;object-fit:cover;" /></div>
+      <div class="project-body">
+        <h4>Women Protection Drone</h4>
+        <p>This drone is designed to enhance personal safety, with a focus on women's security concerns.</p>
+        <a href="https://youtube.com/shorts/f6tCe_hXBwc?si=WNcZvAFqh1JE0TC9" target="_blank" class="watch-link">▶ Watch Now</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <!-- PROJECT IMAGE (Medicine Delivery Drone): Replace URL below -->
+      <div class="project-img"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457140/QFiCl3E9br40bsrMqGhcmAsu74_ts8xoo.avif" alt="Medicine Delivery Drone" style="width:100%;height:170px;object-fit:cover;" /></div>
+      <div class="project-body">
+        <h4>Medicine Delivery Drone</h4>
+        <p>This drone is designed to improve access to medical supplies in rural areas by enabling faster delivery.</p>
+        <a href="https://youtu.be/Lk_NV1ZoGkA?si=I7xoQv1DN0Kq2IVg" target="_blank" class="watch-link">▶ Watch Now</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <!-- PROJECT IMAGE (Fire Extinguisher Drone): Replace URL below -->
+      <div class="project-img"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457139/Vxiaqk7dWSGYAg701A59gwJ4PQ_hyvuje.avif" alt="Fire Extinguisher Drone" style="width:100%;height:170px;object-fit:cover;" /></div>
+      <div class="project-body">
+        <h4>Fire Extinguisher Drone</h4>
+        <p>It assists firefighters in extinguishing fires in high-rise buildings.</p>
+        <a href="#" class="watch-link">▶ Watch Now</a>
+      </div>
+    </div>
+    <div class="project-card">
+      <!-- PROJECT IMAGE (Rescue Drone): Replace URL below -->
+      <div class="project-img"><img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780457138/urgnYYRNFRcSeCnZDm8GT3yQvE_bmrgx1.avif" alt="Rescue Drone" style="width:100%;height:170px;object-fit:cover;" /></div>
+      <div class="project-body">
+        <h4>Rescue Drone</h4>
+        <p>It is designed to aid in the rescue of victims during natural disasters.</p>
+        <a href="https://youtube.com/shorts/7JuBw61aNdM" target="_blank" class="watch-link">▶ Watch Now</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-tag" style="text-align:center;">FAQ's</div>
+  <h2 class="section-title" style="text-align:center;">General Questions</h2>
+  <p class="section-desc" style="margin:0 auto 48px;text-align:center;">Dive into a wealth of knowledge, find clarity, and gain insights. Ask anything, and discover the information you seek.</p>
+  <div class="faq-grid">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What services does your company offer? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">We offer Agricultural Drone Solutions, Customized Drone Solutions, IoT Solutions, and Training & Education programs — all designed to help businesses and individuals harness the power of drone technology.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you provide customized drone solutions? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes! We create bespoke drones tailored to your unique requirements, whether for surveillance, delivery, or industrial applications.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you offer drone training programs? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Absolutely. We offer AICTE-approved drone and IoT training programs with hands-on learning, expert mentors, and real-world projects.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you supply drone parts? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes, we supply a range of drone parts and accessories including EFT agricultural drones, SKYRC smart chargers, Herewin batteries, and electrostatic nozzles.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you provide maintenance for your drones? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes, we provide full maintenance support for drones we supply and build. Our team of certified professionals is available to assist with servicing and repairs.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What makes your company unique? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">We combine innovation, expertise, and a dedicated team to build drone solutions that solve real-world challenges. With 3 patents published and AICTE-approved training, we stand out in the Indian drone ecosystem.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What industries do your drones serve? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">We serve agriculture, security & surveillance, disaster rescue, healthcare/medicine delivery, logistics, and IoT-enabled manufacturing industries.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Are your drones compliant with regulations? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Yes, all our drone solutions are designed to comply with DGCA regulations in India. We ensure full legal compliance for all drone operations.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How can I get in touch with your team? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">You can reach us at gaganyanaerospace@gmail.com or call +91 77027 26262 / +91 9866 395959 (Sai Suraj). We're based in Bhimavaram, Andhra Pradesh.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How do agriculture drones help farmers? <span class="faq-arrow">+</span></button>
+      <div class="faq-a">Agriculture drones enable precision spraying, reduce chemical waste by up to 40%, allow crop health monitoring via multispectral imaging, and can cover large fields rapidly — saving time, cost, and labor for farmers.</div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section">
+<section class="cta-section" id="contact">
   <h2>Don't Hesitate to Contact Us,<br>We Can Assist You!</h2>
   <p>Reach out to our team for demos, training inquiries, partnerships, or custom drone solutions.</p>
   <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
@@ -583,7 +1190,8 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
       <div class="footer-brand-name">GAGANYAN AEROSPACE</div>
       <p>Pioneering drone solutions that solve real-world problems and shape the future of industries. Committed to innovation, quality, and sustainability.</p>
       <div class="footer-contact">
-        <div>📍 Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</div><br>
+        <div>📍 Narasayya Agraharam Rd, Bhimavaram,<br>Andhra Pradesh – 534202</div>
+        <br>
         <div><strong>Phone:</strong> +91 77027 26262 / +91 9866 395959</div>
         <div><strong>Email:</strong> gaganyanaerospace@gmail.com</div>
       </div>
@@ -598,8 +1206,8 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
       <ul>
         <li><a href="index.html">Homepage</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="index.html#services">Service</a></li>
-        <li><a href="index.html#faq">FAQ's</a></li>
+        <li><a href="#services">Service</a></li>
+        <li><a href="#faq">FAQ's</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -630,5 +1238,14 @@ footer { background: #111827; color: #d1d5db; padding: 64px 5% 32px; }
   </div>
 </footer>
 
+<script>
+function toggleFaq(btn) {
+  const answer = btn.nextElementSibling;
+  const isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+</script>
 </body>
 </html>

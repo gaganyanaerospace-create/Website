@@ -690,6 +690,116 @@ footer {
   .stat-item { border-right: none; border-bottom: 1px solid var(--card-border); }
   .stat-item:last-child { border-bottom: none; }
 }
+
+/* ── MOBILE NAV HAMBURGER ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+  z-index: 200;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #111;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  z-index: 99;
+  padding: 16px 5% 24px;
+  flex-direction: column;
+  gap: 0;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  color: #111; font-size: 15px; font-weight: 500;
+  text-decoration: none; padding: 13px 0;
+  border-bottom: 1px solid #f3f4f6;
+  display: block; transition: color 0.2s;
+}
+.mobile-menu a:hover { color: #3a6b47; }
+.mobile-menu .mobile-cta {
+  background: #3a6b47; color: #fff !important;
+  padding: 14px 24px; border-radius: 10px;
+  font-weight: 700 !important; text-align: center;
+  margin-top: 12px; border-bottom: none !important;
+  display: block;
+}
+
+/* ── MOBILE FIXES ── */
+@media (max-width: 900px) {
+  .nav-hamburger { display: flex; }
+  .hero-btns { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .hero h1 { font-size: clamp(32px, 9vw, 52px); }
+  .hero { text-align: center; }
+  .hero-welcome { justify-content: center; }
+  .hero-btns { align-items: center; }
+  .choose-cards { flex: 0 0 auto; width: 100%; }
+  .choose-image img { min-height: 260px; }
+  section { padding: 60px 5%; }
+  .about-feature-cards { grid-template-columns: 1fr; gap: 20px; }
+  .about-stat-badges { gap: 12px; }
+  .about-stat-badge { min-width: 110px; padding: 14px 16px; }
+  .about-stat-badge .badge-num { font-size: 26px; }
+  .video-embed img { height: 220px; }
+  .video-embed iframe { height: 220px !important; }
+  .partners-section { padding: 40px 5%; }
+  .cta-section { padding: 60px 5%; }
+  .cta-section h2 { font-size: clamp(22px, 6vw, 34px); }
+  .stat-num { font-size: 36px; }
+  .stat-item { padding: 24px 16px; min-width: 120px; }
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; }
+  .stat-item { border-right: 1px solid var(--card-border) !important; border-bottom: 1px solid var(--card-border) !important; }
+  .stat-item:nth-child(even) { border-right: none !important; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-bottom: none !important; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .training-inner { gap: 40px; }
+  .founder-card { padding: 32px 24px; gap: 28px; }
+}
+@media (max-width: 480px) {
+  nav { padding: 0 4%; }
+  section { padding: 48px 4%; }
+  .hero { padding: 52px 4% 40px; }
+  .hero h1 { font-size: clamp(28px, 10vw, 44px); letter-spacing: -1px; }
+  .hero-desc { font-size: 14px; }
+  .btn-green { padding: 13px 26px; font-size: 14px; }
+  .why-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .service-row { border-right: none !important; }
+  .about-feature-cards { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .stats-row { grid-template-columns: 1fr 1fr; }
+  .partners-track-wrap::before, .partners-track-wrap::after { width: 40px; }
+  .video-embed img { height: 190px; }
+  .video-embed iframe { height: 190px !important; }
+  .cta-section h2 br { display: none; }
+  .training-image-card { padding: 24px; }
+  .aicte-badge { font-size: 12px; padding: 8px 14px; }
+  .choose-pct { font-size: 52px; }
+  .founder-avatar { width: 100px; height: 100px; }
+  .founder-avatar img { width: 100px; height: 100px; }
+  .product-price { font-size: 18px; }
+  .nav-logo-svg { height: 44px; }
+}
+
 </style>
 </head>
 <body>
@@ -708,7 +818,38 @@ footer {
     <li><a href="#contact">CONTACT</a></li>
     <li><a href="https://chat.whatsapp.com/IgRP4Hm8J4B0c0K6Nhpb0U" target="_blank" class="nav-cta">Community</a></li>
   </ul>
+
+<!-- MOBILE HAMBURGER -->
+<button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+  <span></span><span></span><span></span>
+</button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">HOME</a>
+  <a href="#services">SERVICES</a>
+  <a href="/about">ABOUT</a>
+  <a href="#contact">CONTACT</a>
+  <a href="https://chat.whatsapp.com/IgRP4Hm8J4B0c0K6Nhpb0U" target="_blank" class="mobile-cta">Community</a>
+</div>
+<script>
+(function(){
+  var btn = document.getElementById('navHamburger');
+  var menu = document.getElementById('mobileMenu');
+  btn.addEventListener('click', function(){
+    btn.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  // close on link click
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+})();
+</script>
 
 <!-- TICKER -->
 <div class="ticker">
@@ -730,7 +871,7 @@ footer {
     <div class="hero-welcome">Welcome To Gaganyan Aerospace</div>
     <h1>Drone Industry<br>Specialized in<br>Autonomous<br>Flights</h1>
     <p class="hero-desc">The future of Drone Technology is taking flight. We're developing cutting-edge drone projects to transform Security, Surveillance, Rescue, Agriculture industries. Join the revolution.</p>
-    <a href="#contact" class="btn-green">Request a Demo</a>
+    <div class="hero-btns"><a href="#contact" class="btn-green">Request a Demo</a></div>
   </div>
   <div class="hero-visual">
     <div class="hero-ill-wrap">

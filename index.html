@@ -547,6 +547,17 @@ section { padding: 90px 5%; }
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
+
+/* ── ADVISOR ── */
+.advisor-section { background: #fff; padding-top: 0; }
+.advisor-card { flex-direction: row-reverse; }
+.advisor-card .founder-avatar { width: 150px; height: 150px; }
+.advisor-tag { font-size: 12px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--green-btn); margin-bottom: 10px; display: block; }
+.advisor-bio { font-size: 16px; line-height: 1.8; color: #444; margin: 0 0 20px; }
+.advisor-creds { font-size: 13px; color: var(--muted); margin-top: 4px; }
+.advisor-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.advisor-chip { background: #fff; border: 1px solid #c8e6e2; border-radius: 999px; padding: 6px 14px; font-size: 12.5px; font-weight: 700; color: var(--heading); }
+
 /* ── TESTIMONIALS ── */
 .testimonials-section { background: #f9fafb; text-align: center; }
 .testimonials-section .section-desc { margin: 0 auto 40px; }
@@ -796,6 +807,8 @@ footer {
   .choose-pct { font-size: 52px; }
   .founder-avatar { width: 100px; height: 100px; }
   .founder-avatar img { width: 100px; height: 100px; }
+  .advisor-card .founder-avatar { width: 120px; height: 120px; }
+  .advisor-card .founder-avatar img { width: 120px; height: 120px !important; }
   .product-price { font-size: 18px; }
   .nav-logo-svg { height: 44px; }
 }
@@ -1244,6 +1257,28 @@ footer {
     <div class="founder-avatar" style="overflow:hidden;background:none;">
       <!-- FOUNDER PHOTO: Replace URL below -->
       <img src="https://res.cloudinary.com/drfl8crbx/image/upload/v1780454744/89UjWZmgYfghl2uQ0YxVbPbuSc_dqcdnk.avif" alt="Dr. Rangarao Orugu" style="width:130px;height:130px;object-fit:cover;border-radius:50%;" />
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC & TECHNICAL ADVISOR -->
+<section class="founder-section advisor-section">
+  <div class="founder-card advisor-card">
+    <div class="founder-quote">
+      <span class="advisor-tag">Strategic &amp; Technical Advisor</span>
+      <p class="advisor-bio" style="font-style:normal;">Dr. M. Aravind Kumar is a Principal and Professor with 19+ years of academic and industry experience. His research focuses on VLSI and signal processing, AI-based image processing, biomedical image processing, IoT, deep learning, data analytics, predictive analytics, and machine learning. He has published more than 73 research papers and authored 34 books/book chapters, and has contributed to several patents and utility models, including in drones, smart wearable devices and machine-learning-based systems.</p>
+      <div class="founder-name">Dr. M. Aravind Kumar</div>
+      <div class="founder-role">Strategic &amp; Technical Advisor, Gaganyan Aerospace</div>
+      <div class="advisor-creds">M.Tech., Ph.D. | Principal &amp; Professor, Electronics and Communication Engineering, West Godavari Institute of Science and Engineering, Andhra Pradesh</div>
+      <div class="advisor-chips">
+        <span class="advisor-chip">19+ Years Experience</span>
+        <span class="advisor-chip">73+ Research Papers</span>
+        <span class="advisor-chip">34 Books / Chapters</span>
+        <span class="advisor-chip">Patents &amp; Utility Models</span>
+      </div>
+    </div>
+    <div class="founder-avatar" style="overflow:hidden;background:none;">
+      <img src="data:image/jpeg;base64,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" alt="Dr. M. Aravind Kumar" style="width:150px;height:150px;object-fit:cover;object-position:center 20%;border-radius:50%;" />
     </div>
   </div>
 </section>
